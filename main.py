@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask_httpauth import HTTPBasicAuth
-from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 
 import users
 
@@ -14,7 +14,7 @@ def verify_password_and_routes(username, password):
     user_data = users.users.get(username)
 
     if username in users.users \
-            and check_password_hash(user_data['pass'], password) \
+            and check_password_hash(generate_password_hash(user_data['pass']), password) \
             and rule.rule in user_data['routes']:
         return username
 
