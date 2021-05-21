@@ -25,7 +25,7 @@ def index():
     return "Hello, {}!".format(auth.current_user())
 
 
-@app.route('/nbnote_invoice')
+@app.route('/nbnote_invoice_no')
 @auth.login_required
 def nbnote_invoice():
     return "Hello, {}!".format(auth.current_user())
